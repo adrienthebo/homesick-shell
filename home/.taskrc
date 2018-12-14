@@ -33,3 +33,14 @@ report.newest.sort=entry+
 report.next.sort=urgency+
 
 report.ready.sort=start+,urgency+
+urgency.user.tag.Impeded.coefficient=-8.0
+urgency.user.project.GPN.coefficient=3.0
+urgency.user.project.CFT.coefficient=1.5
+context.CFT=project:CFT
+
+taskd.certificate=~/.config/taskwarrior/private.certificate.pem
+taskd.key=~/.config/taskwarrior/private.key.pem
+taskd.ca=~/.config/taskwarrior/ca.cert.pem
+taskd.server=taskwarrior.inthe.am:53589
+taskd.credentials=inthe_am/adrien/71cd93b6-e91c-4672-95a6-fdbe4c2f84df
+taskd.trust=ignore hostname
