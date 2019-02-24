@@ -28,7 +28,7 @@ data.location=~/.task
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
 
-urgency.user.tag.Inflight.coefficient=8.0
+urgency.user.tag.Inflight.coefficient=4.0
 urgency.user.tag.Impeded.coefficient=-8.0
 urgency.user.project.CFT.coefficient=1.5
 context.CFT=project:CFT
