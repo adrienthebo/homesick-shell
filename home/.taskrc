@@ -30,8 +30,17 @@ data.location=~/.task
 
 urgency.user.tag.Inflight.coefficient=4.0
 urgency.user.tag.Impeded.coefficient=-8.0
-urgency.user.project.CFT.coefficient=1.5
-context.CFT=project:CFT
+urgency.user.tag.Impeded.CI.coefficient=-8.0
+urgency.user.tag.Impeded.Review.coefficient=-16.0
+
+uda.buganizer.type=string
+uda.buganizer.label=Buganizer
+
+uda.pr.type=string
+uda.pr.label=Pull Request
+
+uda.cr.type=string
+uda.cr.label=Change Request
 
 taskd.certificate=~/.config/taskwarrior/private.certificate.pem
 taskd.key=~/.config/taskwarrior/private.key.pem
