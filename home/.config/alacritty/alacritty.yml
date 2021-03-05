@@ -14,6 +14,8 @@ env:
   TERM: xterm-256color
 
 window:
+  dynamic_title: true
+
   # Window dimensions in character columns and lines
   # (changes require restart)
   dimensions:
@@ -39,16 +41,17 @@ font:
   # The normal (roman) font face to use.
   normal:
     # family: Source Code Pro
-    family: Sauce Code Powerline
+    family: RobotoMono Nerd Font
+    style: Regular
 
   # The bold font face
   bold:
-    family: Sauce Code Powerline
+    family: RobotoMono Nerd Font
     style: Bold
 
   # The italic font face
   italic:
-    family: Source Code Powerline
+    family: RobotoMono Nerd Font
     style: Italic
 
   # Point size of the font
@@ -69,7 +72,7 @@ font:
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
-  #scale_with_dpi: true
+  scale_with_dpi: true
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
   # false.
@@ -149,7 +152,7 @@ colors:
 #
 # To completely disable the visual bell, set its duration to 0.
 #
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -195,8 +198,6 @@ mouse:
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-dynamic_title: true
 
 hide_cursor_when_typing: false
 
