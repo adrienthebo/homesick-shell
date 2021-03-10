@@ -26,6 +26,12 @@ urgency.uda.priority.L.coefficient=-1.8
 context.Lagrange=(project.not:Personal or priority:H or +OVERDUE)
 context.Personal=(project.not:Lagrange or priority:H or +OVERDUE)
 
+report.triage.description=Show the next issue to triage
+report.triage.columns=id,status,project,tags,due,description.count
+report.triage.labels=ID,status,Project,Tags,Due,Description
+report.triage.sort=urgency-
+report.triage.filter=status:pending +Untriaged limit:1
+
 report.open.description=All open tasks
 report.open.columns=id,project,status,tags,entry,due,description.count
 report.open.labels=ID,Project,Status,Tags,Created,Due,Description
