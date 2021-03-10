@@ -8,7 +8,7 @@ report.triage.columns=id,status,project,tags,due,description.count
 report.triage.labels=ID,status.short,Project,Tags,Due,Description
 
 report.open.description=All open tasks
-report.open.sort=project+\/,urgency+
+report.open.sort=project+\/,urgency-
 report.open.filter=status.not:completed status.not:deleted
 report.open.labels=ID,Project,Status,Due,Until,Urgency,Description
 report.open.columns=id,project,status.short,due.remaining,until.remaining,urgency,description.count
