@@ -27,4 +27,6 @@ urgency.uda.priority.L.coefficient=-1.8
 context.Lagrange=(project.not:Personal or priority:H or +OVERDUE)
 context.Personal=(project.not:Lagrange or priority:H or +OVERDUE)
 
+default.command=ready
+
 context=Lagrange
