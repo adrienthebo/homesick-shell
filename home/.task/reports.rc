@@ -16,6 +16,11 @@ report.open.columns=id,project,status.short,due.remaining,until.remaining,urgenc
 report.yesterday.description=Yesterday's completed tasks
 report.yesterday.sort=project+\/,urgency-
 report.yesterday.filter=status:completed end.after:yesterday end.before:today
-
 report.yesterday.columns=id,project,urgency,description.combined
 report.yesterday.labels=ID,Project,urgency,Description
+
+report.now.description=What to do, right now
+report.now.filter=+READY limit:1
+report.now.sort=start-,urgency-
+report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due.countdown,until.remaining,description,urgency
+report.ready.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
