@@ -30,3 +30,9 @@ report.today.filter=((wait.after:today wait.before:eod) or (due.after:today due.
 report.today.sort=status+\/,wait+,urgency-
 report.today.columns=id,entry.age,priority,project,tags,scheduled.countdown,wait.remaining,due.remaining,urgency,description.count
 report.today.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
+
+report.untriaged.description=Untriaged tasks
+report.untriaged.filter=(status.not:completed status.not:deleted) (+Untriaged or (due: until: ))
+report.untriaged.sort=entry+
+report.untriaged.columns=id,entry.age,priority,project,tags,scheduled.countdown,wait.remaining,due.remaining,urgency,description.count
+report.untriaged.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
