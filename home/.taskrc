@@ -28,5 +28,6 @@ context.Lagrange=(project.not:Personal or priority:H or +OVERDUE)
 context.Personal=(project.not:Lagrange or priority:H or +OVERDUE)
 
 default.command=ready
+recurrence.limit=1
 
 context=Lagrange
