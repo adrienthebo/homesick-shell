@@ -1,9 +1,6 @@
-# :Tabularize /,/r0l1
-
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
 report.triage.filter=status:pending +Untriaged limit:1
-
 report.triage.columns=id,status,project,tags,due,description.count
 report.triage.labels=ID,status.short,Project,Tags,Due,Description
 
