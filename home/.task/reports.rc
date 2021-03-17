@@ -1,3 +1,13 @@
+# Taskwarrior reports
+
+###
+# Default report overrides
+
+report.ready.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due.relative,until.remaining,description,urgency
+
+###
+# Custom reports
+
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
 report.triage.filter=status:pending +Untriaged limit:1
@@ -19,7 +29,7 @@ report.yesterday.labels=ID,Project,urgency,Description
 report.now.description=What to do, right now
 report.now.filter=+READY limit:1
 report.now.sort=start-,urgency-
-report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due.countdown,until.remaining,description.combined,urgency
+report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due.relative,until.remaining,description.combined,urgency
 report.now.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
 
 report.today.description=Today's upcoming tasks
@@ -33,3 +43,9 @@ report.untriaged.filter=(status.not:completed status.not:deleted) (+Untriaged or
 report.untriaged.sort=entry+
 report.untriaged.columns=id,entry.age,priority,project,tags,scheduled.countdown,wait.remaining,due.remaining,urgency,description.count
 report.untriaged.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
+
+report.yaks.description=Domesticated Himalayan Long Haired Cattle
+report.yaks.filter=(entry.after:now-5d or end.after:now-5d) +Yaks
+report.yaks.sort=status+/,entry+
+report.yaks.columns=id,project,entry.relative,status,tags,recur.indicator,scheduled.countdown,until.remaining,description.count
+report.yaks.labels=ID,Project,Entry,Status,Tags,R,S,Until,Description
