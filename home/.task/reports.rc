@@ -1,14 +1,14 @@
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
 report.triage.filter=status:pending +Untriaged limit:1
-report.triage.columns=id,status,project,tags,due,description.combined
-report.triage.labels=ID,status.short,Project,Tags,Due,Description
+report.triage.columns=id,status,project,depends,tags,due.relative,until.relative,description.combined
+report.triage.labels=ID,status.short,Project,Depends,Tags,Due,Until,Description
 
 report.open.description=All open tasks
 report.open.sort=project+\/,urgency-
 report.open.filter=status.not:completed status.not:deleted
-report.open.labels=ID,Project,Status,Due,Until,Urgency,Description
-report.open.columns=id,project,status.short,due.remaining,until.remaining,urgency,description.count
+report.open.labels=ID,Project,Status,D,Due,Until,Urgency,Description
+report.open.columns=id,project,status.short,depends.indicator,due.remaining,until.remaining,urgency,description.count
 
 report.yesterday.description=Yesterday's completed tasks
 report.yesterday.sort=project+\/,urgency-
