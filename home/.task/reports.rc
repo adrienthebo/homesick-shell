@@ -36,10 +36,10 @@ report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tag
 report.now.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
 
 report.today.description=Today's upcoming tasks
-report.today.filter=((wait.after:today wait.before:eod) or (due.after:today due.before:eod) or +ACTIVE) status.not:completed status.not:deleted
+report.today.filter=(((wait.after:today wait.before:eod) or (due.after:today due.before:eod) or +ACTIVE) status.not:completed status.not:deleted) or (status:completed end:today)
 report.today.sort=status+\/,wait+,urgency-
-report.today.columns=id,entry.age,priority,project,tags,scheduled.countdown,wait.remaining,due.remaining,urgency,description.count
-report.today.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
+report.today.columns=id,status.short,priority,project,tags,scheduled.countdown,wait.remaining,due.remaining,urgency,description.count
+report.today.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
 
 report.untriaged.description=Untriaged tasks
 report.untriaged.filter=(status.not:completed status.not:deleted) (+Untriaged or (due: until: ))
