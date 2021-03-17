@@ -1,7 +1,7 @@
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
 report.triage.filter=status:pending +Untriaged limit:1
-report.triage.columns=id,status,project,tags,due,description.count
+report.triage.columns=id,status,project,tags,due,description.combined
 report.triage.labels=ID,status.short,Project,Tags,Due,Description
 
 report.open.description=All open tasks
