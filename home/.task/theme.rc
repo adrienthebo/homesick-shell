@@ -24,7 +24,7 @@
 #
 ###############################################################################
 
-rule.precedence.color=deleted,completed,active,keyword.,tag.,project.,overdue,scheduled,due.today,due,blocked,blocking,recurring,tagged,uda.
+rule.precedence.color=deleted,completed,active,keyword.,tag.,overdue,scheduled,due.today,due,blocked,blocking,recurring,tagged,uda.
 
 # General decoration
 color.label=
@@ -40,9 +40,8 @@ color.debug=blue
 color.completed=
 color.deleted=
 color.active=rgb050 on rgb010
-# color.active=bold yellow on bright black
 color.recurring=
-color.scheduled=on bright cyan
+color.scheduled=
 color.until=
 color.blocking=red
 color.blocked=blue
