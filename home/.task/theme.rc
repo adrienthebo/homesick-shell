@@ -63,7 +63,7 @@ color.tagged=
 # Due
 color.due=on bright green
 color.due.today=on bright yellow
-color.overdue=on bright red
+color.overdue=on rgb105
 
 # Report: burndown
 color.burndown.pending=on bright red
