@@ -26,7 +26,7 @@ report.open.columns=id,project,status.short,depends.indicator,wait.relative,sche
 report.yesterday.description=Yesterday's completed tasks
 report.yesterday.sort=project+\/,urgency-
 report.yesterday.filter=status:completed end.after:yesterday end.before:today
-report.yesterday.columns=id,project,urgency,description.combined
+report.yesterday.columns=id,project,urgency,description.count
 report.yesterday.labels=ID,Project,urgency,Description
 
 report.today.description=Today's upcoming tasks
