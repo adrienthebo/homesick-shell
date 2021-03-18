@@ -51,8 +51,8 @@ color.blocked=blue
 color.project.none=
 
 # Priority
-color.uda.priority.H=bright white
-color.uda.priority.M=bright white
+color.uda.priority.H=underline bold white
+color.uda.priority.M=bold white
 color.uda.priority.L=grey08
 
 # Tags
