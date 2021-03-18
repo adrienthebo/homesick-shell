@@ -29,17 +29,23 @@ report.yesterday.filter=status:completed end.after:yesterday end.before:today
 report.yesterday.columns=id,project,urgency,description.combined
 report.yesterday.labels=ID,Project,urgency,Description
 
-report.now.description=What to do, right now
-report.now.filter=+READY limit:1
-report.now.sort=start-,urgency-
-report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due.relative,until.remaining,description.combined,urgency
-report.now.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
-
 report.today.description=Today's upcoming tasks
 report.today.filter=(((wait.after:today wait.before:eod) or (due.after:today due.before:eod) or +ACTIVE) status.not:completed status.not:deleted) or (status:completed end:today)
 report.today.sort=status+\/,wait+,urgency-
 report.today.columns=id,status.short,priority,project,tags,scheduled.countdown,wait.remaining,due.remaining,urgency,description.count
 report.today.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
+
+report.tomorrow.description=Tomorrow's upcoming tasks
+report.tomorrow.filter=(wait.after:tomorrow wait.before:tomorrow+1d) or (due.after:tomorrow due.before:tomorrow+1d) or (scheduled.after:tomorrow scheduled.before:tomorrow+1d)
+report.tomorrow.sort=status+\/,due+,urgency-
+report.tomorrow.columns=id,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
+report.tomorrow.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
+
+report.now.description=What to do, right now
+report.now.filter=+READY limit:1
+report.now.sort=start-,urgency-
+report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due.relative,until.remaining,description.combined,urgency
+report.now.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
 
 report.untriaged.description=Untriaged tasks
 report.untriaged.filter=(status.not:completed status.not:deleted) (+Untriaged or (due: until: ))
