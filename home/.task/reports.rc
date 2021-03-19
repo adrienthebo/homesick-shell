@@ -11,41 +11,8 @@ report.waiting.columns=id,start.active,entry.age,depends.indicator,priority,proj
 ###
 # Custom reports
 
-report.triage.description=Show the next issue to triage
-report.triage.sort=urgency-
-report.triage.filter=status:pending +Untriaged limit:1
-report.triage.columns=id,status,project,depends,tags,due.relative,until.relative,description.combined
-report.triage.labels=ID,status.short,Project,Depends,Tags,Due,Until,Description
-
-report.open.description=All open tasks
-report.open.sort=project+\/,urgency-
-report.open.filter=status.not:completed status.not:deleted
-report.open.labels=ID,Project,Status,D,W,S,Due,Until,P,Urgency,Description
-report.open.columns=id,project,status.short,depends.indicator,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,urgency,description.count
-
-report.yesterday.description=Yesterday's completed tasks
-report.yesterday.sort=project+\/,urgency-
-report.yesterday.filter=status:completed end.after:yesterday end.before:today
-report.yesterday.columns=id,project,urgency,description.count
-report.yesterday.labels=ID,Project,urgency,Description
-
-report.today.description=Today's upcoming tasks
-report.today.filter=(((wait.after:today wait.before:eod) or (due.after:today due.before:eod) or (scheduled.not: scheduled.after:today scheduled.before:tomorrow)or +ACTIVE) status.not:completed status.not:deleted) or (status:completed end:today)
-report.today.sort=status+\/,wait+,urgency-
-report.today.columns=id,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
-report.today.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
-
-report.tomorrow.description=Tomorrow's upcoming tasks
-report.tomorrow.filter=(wait.after:tomorrow wait.before:tomorrow+1d) or (due.after:tomorrow due.before:tomorrow+1d) or (scheduled.after:tomorrow scheduled.before:tomorrow+1d)
-report.tomorrow.sort=status+\/,due+,urgency-
-report.tomorrow.columns=id,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
-report.tomorrow.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
-
-report.now.description=What to do, right now
-report.now.filter=+READY limit:1
-report.now.sort=start-,urgency-
-report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.relative,due.relative,until.remaining,description.combined,urgency
-report.now.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
+#####
+# Task triaging
 
 report.untriaged.description=Untriaged tasks
 report.untriaged.filter=(status.not:completed status.not:deleted) (+Untriaged or (due: until: ) or (priority:L until: ))
@@ -53,8 +20,63 @@ report.untriaged.sort=entry+
 report.untriaged.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
 report.untriaged.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
 
+report.triage.description=Show the next issue to triage
+report.triage.sort=urgency-
+report.triage.filter=status:pending +Untriaged limit:1
+report.triage.columns=id,status,project,depends,tags,due.relative,until.relative,description.combined
+report.triage.labels=ID,status.short,Project,Depends,Tags,Due,Until,Description
+
+#####
+# Timeline based reports
+
+report.yesterday.description=Yesterday's completed tasks
+report.yesterday.sort=project+\/,urgency-
+report.yesterday.filter=status:completed end.after:yesterday end.before:today
+report.yesterday.columns=id,project,urgency,description.count
+report.yesterday.labels=ID,Project,urgency,Description
+
+# Tasks that -
+#   * Are active
+#
+# OR
+#
+#   * Are due today
+#   * Become unwaited today
+#   * Are scheduled for today
+#
+# OR
+#
+#   * Were completed today
+#
+report.today.description=Today's upcoming tasks
+report.today.filter=(((wait.after:today wait.before:eod) or (due.after:today due.before:eod) or (scheduled.not: scheduled.after:today scheduled.before:tomorrow) or +ACTIVE) status.not:completed status.not:deleted) or (status:completed end:today)
+report.today.sort=status+\/,wait+,urgency-
+report.today.columns=id,entry.age,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
+report.today.labels=ID,Entry,Status,P,Project,Tags,S,Wait,Due,Urg,Description
+
+report.tomorrow.description=Tomorrow's upcoming tasks
+report.tomorrow.filter=((wait.after:tomorrow wait.before:tomorrow+1d) or (due.after:tomorrow due.before:tomorrow+1d) or (scheduled.after:tomorrow scheduled.before:tomorrow+1d) or +OVERDUE) status.not:completed status.not:deleted
+report.tomorrow.sort=status+\/,due+,urgency-
+report.tomorrow.columns=id,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.relative,urgency,description.count
+report.tomorrow.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
+
+#####
+# Everything else
+
+report.open.description=All open tasks
+report.open.sort=project+\/,urgency-
+report.open.filter=status.not:completed status.not:deleted
+report.open.labels=ID,Project,Status,D,W,S,Due,Until,P,Urgency,Description
+report.open.columns=id,project,status.short,depends.indicator,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,urgency,description.count
+
+report.now.description=What to do, right now
+report.now.filter=+READY limit:1
+report.now.sort=start-,urgency-
+report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.relative,due.relative,until.remaining,description.combined,urgency
+report.now.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
+
 report.yaks.description=Domesticated Himalayan Long Haired Cattle
-report.yaks.filter=(entry.after:now-5d or end.after:now-5d) +Yaks
+report.yaks.filter=(entry.after:now-1w or end.after:now-1w) +Yaks
 report.yaks.sort=status+/,entry+
 report.yaks.columns=id,project,entry.age,status,tags,recur.indicator,scheduled.countdown,until.remaining,description.count
 report.yaks.labels=ID,Project,Entry,Status,Tags,R,S,Until,Description
