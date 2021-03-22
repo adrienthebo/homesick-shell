@@ -12,9 +12,6 @@ if ! [[ -d ~/.asdf ]]; then
   git clone https://github.com/asdf-vm/asdf ~/.asdf
   export PATH=$PATH:$HOME/.asdf/bin
 
-  # shellcheck disable=SC1090
-  source "$HOME/.asdf/asdf.sh"
-
   asdf plugin add ruby
   asdf plugin add python
 
@@ -24,7 +21,10 @@ if ! [[ -d ~/.asdf ]]; then
   asdf global python 3.9.2
 fi
 
-if ! command -v rustup; then
+# shellcheck disable=SC1090
+source "$HOME/.asdf/asdf.sh"
+
+if ! command -v rustup 2>&- 1>&-; then
   brew install rustup
   rustup-init -qy
   export "PATH=$PATH:~/.cargo/bin"
@@ -36,8 +36,6 @@ fi
 
 ################################################################################
 # Development tools
-
-go get github.com/fiatjaf/jiq/cmd/jiq
 
 gem install homesick
 
@@ -61,10 +59,10 @@ cargo install watchexec
 tldr --update
 
 # Terminal environment
-brew cask install font-source-code-pro-for-powerline
+brew install font-source-code-pro-for-powerline font-roboto-mono-for-powerline
 brew install fontconfig
 fc-cache -frv
-brew cask install alacritty
+brew install alacritty
 
 # zinit
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
