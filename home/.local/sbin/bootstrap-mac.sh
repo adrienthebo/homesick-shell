@@ -39,7 +39,7 @@ fi
 
 gem install homesick
 
-brew install zsh tmux neovim htop watch direnv jq jiq pv
+brew install zsh tmux neovim htop watch direnv jq pv
 # Also consider
 # brew install pre-commit
 # brew install k9s
