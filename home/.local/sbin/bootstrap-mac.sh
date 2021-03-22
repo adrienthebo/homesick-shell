@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xeuo pipefail
+
 ################################################################################
 # Language/package manager/runtime install
 
