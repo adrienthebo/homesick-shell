@@ -59,7 +59,7 @@ cargo install watchexec
 tldr --update
 
 # Terminal environment
-brew install font-source-code-pro-for-powerline font-roboto-mono-for-powerline
+brew install --cask font-source-code-pro-for-powerline font-roboto-mono-for-powerline
 brew install fontconfig
 fc-cache -frv
 brew install alacritty
