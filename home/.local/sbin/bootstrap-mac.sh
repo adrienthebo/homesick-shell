@@ -41,7 +41,10 @@ fi
 
 gem install homesick
 
-brew install zsh tmux neovim htop watch direnv jq pv gnu-sed taskwarrior-tui
+brew install zsh tmux neovim htop watch direnv jq pv gnu-sed taskwarrior-tui svn
+
+zsh -c "autoload -Uz compaudit && compaudit | xargs chmod g-w,o-w"
+
 # Also consider
 # brew install pre-commit
 # brew install k9s
@@ -52,22 +55,28 @@ cargo install git-delta
 cargo install lsd
 cargo install rargs
 cargo install ripgrep
-cargo install sccache
 cargo install tealdeer
 cargo install tokei
 cargo install emojify
 cargo install watchexec
 
+if ! [[ -f $HOME/.cargo/bin/sccache ]]; then
+  cargo install sccache
+fi
+
 tldr --update
 
-# Terminal environment
-brew install --cask font-source-code-pro-for-powerline font-roboto-mono-for-powerline
+brew install homebrew/cask-fonts/font-roboto-mono-nerd-font
 brew install fontconfig
 fc-cache -frv
 brew install alacritty
 
-# zinit
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+if ! [[ -d ~/.zinit ]]; then
+  # zinit
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+fi
+
+nvim +:PlugInstall +:qall
 
 ################################################################################
 # Auth
