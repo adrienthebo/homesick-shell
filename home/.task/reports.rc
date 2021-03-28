@@ -67,7 +67,7 @@ report.open.description=All open tasks
 report.open.sort=project+\/,urgency-
 report.open.filter=status.not:completed status.not:deleted
 report.open.labels=ID,Project,Status,D,W,S,Due,Until,P,Urgency,Description
-report.open.columns=id,project,status.short,depends.indicator,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,urgency,description.count
+report.open.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,urgency,description.count
 
 report.now.description=What to do, right now
 report.now.filter=+READY limit:1
