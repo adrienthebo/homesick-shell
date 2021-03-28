@@ -59,6 +59,7 @@ cargo install tealdeer
 cargo install tokei
 cargo install emojify
 cargo install watchexec
+cargo install procs
 
 if ! [[ -f $HOME/.cargo/bin/sccache ]]; then
   cargo install sccache
