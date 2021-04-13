@@ -60,6 +60,7 @@ cargo install tokei
 cargo install emojify
 cargo install watchexec
 cargo install procs
+cargo install ytop
 
 if ! [[ -f $HOME/.cargo/bin/sccache ]]; then
   cargo install sccache
@@ -70,7 +71,7 @@ tldr --update
 brew install homebrew/cask-fonts/font-roboto-mono-nerd-font
 brew install fontconfig
 fc-cache -frv
-brew install alacritty
+brew install --cask --no-quarantine alacritty
 
 if ! [[ -d ~/.zinit ]]; then
   # zinit
