@@ -1,0 +1,15 @@
+# Taskwarrior UDAs
+
+uda.jira.type=string
+uda.jira.label=JIRA
+
+uda.priority.label=Priority
+uda.priority.type=string
+uda.priority.values=H,M,L,
+
+uda.url.label=URL
+uda.url.type=string
+
+urgency.uda.priority.H.coefficient=6.0
+urgency.uda.priority.M.coefficient=3.9
+urgency.uda.priority.L.coefficient=-1.8

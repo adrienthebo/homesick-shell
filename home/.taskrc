@@ -9,20 +9,7 @@ data.location=~/.task
 include ~/.task/theme.rc
 include ~/.task/intheam.rc
 include ~/.task/reports.rc
-
-uda.jira.type=string
-uda.jira.label=JIRA
-
-uda.priority.label=Priority
-uda.priority.type=string
-uda.priority.values=H,M,L,
-
-uda.url.label=URL
-uda.url.type=string
-
-urgency.uda.priority.H.coefficient=6.0
-urgency.uda.priority.M.coefficient=3.9
-urgency.uda.priority.L.coefficient=-1.8
+include ~/.task/udas.rc
 
 context.Lagrange=project.not:Personal or priority:H or +OVERDUE or (due.after:now due.before:now+2hr) or +next
 context.Personal=project.not:Lagrange or priority:H or +OVERDUE
@@ -30,3 +17,4 @@ context.Personal=project.not:Lagrange or priority:H or +OVERDUE
 default.command=ready
 recurrence.limit=1
 
+context=Lagrange

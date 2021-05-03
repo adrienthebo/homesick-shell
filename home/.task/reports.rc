@@ -15,6 +15,14 @@ report.waiting.columns=id,start.active,entry.age,depends.indicator,priority,proj
 # Task triaging
 
 report.untriaged.description=Untriaged tasks
+# Tasks that -
+# * Are not completed or deleted
+#
+# AND ANY OF
+#
+# * Are tagged +Untriaged
+# * Don't have a due date or until date
+# * Are low priority and don't have an until date
 report.untriaged.filter=(status.not:completed status.not:deleted) (+Untriaged or (due: until: ) or (priority:L until: ))
 report.untriaged.sort=entry+
 report.untriaged.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
@@ -22,7 +30,7 @@ report.untriaged.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
 
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
-report.triage.filter=status:pending +Untriaged limit:1
+report.triage.filter=(status.not:completed status.not:deleted) (+Untriaged or (due: until: ) or (priority:L until: )) limit:1
 report.triage.columns=id,status,project,depends,tags,due.relative,until.relative,description.combined
 report.triage.labels=ID,status.short,Project,Depends,Tags,Due,Until,Description
 
@@ -64,10 +72,10 @@ report.tomorrow.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
 # Everything else
 
 report.open.description=All open tasks
-report.open.sort=project+\/,urgency-
+report.open.sort=project+\/,entry-
 report.open.filter=status.not:completed status.not:deleted
-report.open.labels=ID,Project,Status,D,W,S,Due,Until,P,Urgency,Description
-report.open.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,urgency,description.count
+report.open.labels=ID,Project,Status,D,W,S,Due,Until,P,Entry,Urgency,Description
+report.open.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,entry,urgency,description.count
 
 report.now.description=What to do, right now
 report.now.filter=+READY limit:1
