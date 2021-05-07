@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# @see https://direnv.net/docs/ruby.html
+# Usage: use rbenv <version>
+#
+# Loads the specified ruby version into the environent
+#
+use_rbenv() {
+  eval "$(rbenv init -)"
+  rbenv shell "$1"
+  layout ruby
+}
