@@ -60,7 +60,7 @@ cargo install tokei
 cargo install emojify
 cargo install watchexec
 cargo install procs
-cargo install ytop
+cargo install bottom
 
 if ! [[ -f $HOME/.cargo/bin/sccache ]]; then
   cargo install sccache
