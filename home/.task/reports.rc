@@ -8,6 +8,9 @@ report.ready.columns=id,start.age,entry.age,depends.indicator,priority,project,t
 # Use relative time for 'Due' column
 report.waiting.columns=id,start.active,entry.age,depends.indicator,priority,project,tags,recur.indicator,wait,wait.remaining,scheduled,due.relative,until,description
 
+# Limit results for 'newest' report
+report.newest.filter=(status:pending or status:waiting) limit:20
+
 ###
 # Custom reports
 
