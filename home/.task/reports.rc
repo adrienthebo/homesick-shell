@@ -71,6 +71,12 @@ report.tomorrow.sort=status+\/,due+,urgency-
 report.tomorrow.columns=id,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.relative,urgency,description.count
 report.tomorrow.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
 
+report.modified.description=Recently modified tasks
+report.modified.filter=modified:today (status:pending or status:waiting)
+report.modified.sort=status+/,modified+,due+,urgency-
+report.modified.columns=id,status.short,project,modified,due.relative,urgency,description.count
+report.modified.labels=ID,S,Project,Modified,Due,Urg,Description
+
 #####
 # Everything else
 
