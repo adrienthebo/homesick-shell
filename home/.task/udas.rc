@@ -10,6 +10,9 @@ uda.priority.values=H,M,L,
 uda.url.label=URL
 uda.url.type=string
 
+uda.branch.label=Git branch
+uda.branch.type=string
+
 urgency.uda.priority.H.coefficient=6.0
 urgency.uda.priority.M.coefficient=3.9
 urgency.uda.priority.L.coefficient=-1.8

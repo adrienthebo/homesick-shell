@@ -72,10 +72,10 @@ report.tomorrow.columns=id,status.short,priority,project,tags,scheduled.relative
 report.tomorrow.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
 
 report.recent.description=Recently modified tasks
-report.recent.filter=modified:today (status:pending or status:waiting)
-report.recent.sort=status+/,modified+,due+,urgency-
-report.recent.columns=id,status.short,project,modified,due.relative,urgency,description.count
-report.recent.labels=ID,S,Project,Modified,Due,Urg,Description
+report.recent.filter=modified:now-36hr
+report.recent.sort=status+/,modified+
+report.recent.columns=id,status,project,entry.age,modified.age,description.count
+report.recent.labels=ID,Status,Project,Created,Modified,Description
 
 #####
 # Everything else
