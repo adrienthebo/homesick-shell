@@ -11,20 +11,24 @@ include ~/.task/intheam.rc
 include ~/.task/reports.rc
 include ~/.task/udas.rc
 
-#context.Lagrange=project.not:Personal or priority:H or +OVERDUE or (due.after:now due.before:now+2hr) or +next
 
+
+context.Workday=project.not:Personal or (project:Personal -Backlog) or +OVERDUE or (due.after:now due.before:now+2hr)
 # Working hours:
 #
 # Show:
 #   * Personal projects 
 #   * High priority items
 #   * Non-backlog items
-context.Lagrange=project.not:Personal or (project:Personal -Backlog) or +OVERDUE or (due.after:now due.before:now+2hr)
-context.Lagrange.MySQL=project.not:Personal or (project:Personal -Backlog) or +OVERDUE or (due.after:now due.before:now+2hr) project.not:Lagrange.TW.LPR
+
+context.Lagrange=project:Lagrange
+
+context.Lagrange.Focus=project:Lagrange (-Backlog)
+context.Lagrange.Admin=project:Lagrange (+Chore or +Backlog)
 
 context.Personal=project.not:Lagrange or priority:H or +OVERDUE
 
-default.command=ready
+default.command=now
 recurrence.limit=1
 
-context=Lagrange
+context=Workday

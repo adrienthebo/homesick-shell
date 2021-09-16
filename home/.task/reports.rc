@@ -26,16 +26,22 @@ report.untriaged.description=Untriaged tasks
 # * Are tagged +Untriaged
 # * Don't have a due date or until date
 # * Are low priority and don't have an until date
-report.untriaged.filter=(status.not:completed status.not:deleted status.not:waiting) (+Untriaged or (due: until: ) or (priority:L until: ))
+report.untriaged.filter=(status.not:completed status.not:deleted status.not:waiting) -Triaged (+Untriaged or (due: until: ) or (priority:L until: ))
 report.untriaged.sort=entry+
 report.untriaged.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
 report.untriaged.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
 
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
-report.triage.filter=(status.not:completed status.not:deleted status.not:waiting) (+Untriaged or (due: until: ) or (priority:L until: )) limit:1
+report.triage.filter=(status.not:completed status.not:deleted status.not:waiting) -Triaged (+Untriaged or (due: until: ) or (priority:L until: )) limit:1
 report.triage.columns=id,status,project,depends,tags,due.relative,until.relative,description.combined
 report.triage.labels=ID,status.short,Project,Depends,Tags,Due,Until,Description
+
+report.triage.description=What to do, right now
+report.now.filter=status:pending +READY (+next)
+report.now.sort=due+
+report.now.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
+report.now.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
 
 #####
 # Timeline based reports
@@ -72,7 +78,7 @@ report.tomorrow.columns=id,status.short,priority,project,tags,scheduled.relative
 report.tomorrow.labels=ID,Status,P,Project,Tags,S,Wait,Due,Urg,Description
 
 report.recent.description=Recently modified tasks
-report.recent.filter=modified:now-36hr
+report.recent.filter=modified.after:now-16hr status.not:recurring
 report.recent.sort=status+/,modified+
 report.recent.columns=id,status,project,entry.age,modified.age,description.count
 report.recent.labels=ID,Status,Project,Created,Modified,Description
@@ -85,12 +91,6 @@ report.open.sort=project+\/,entry-
 report.open.filter=status.not:completed status.not:deleted status.not:recurring
 report.open.labels=ID,Project,Status,D,W,S,Due,Until,P,Entry,Urgency,Description
 report.open.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,entry,urgency,description.count
-
-report.now.description=What to do, right now
-report.now.filter=+READY limit:1
-report.now.sort=start-,urgency-
-report.now.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.relative,due.relative,until.remaining,description.combined,urgency
-report.now.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
 
 report.yaks.description=Domesticated Himalayan Long Haired Cattle
 report.yaks.filter=(entry.after:now-1w or end.after:now-1w) +Yaks
