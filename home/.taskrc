@@ -21,14 +21,13 @@ context.Workday=project.not:Personal or (project:Personal -Backlog) or +OVERDUE 
 #   * High priority items
 #   * Non-backlog items
 
-context.Lagrange=project:Lagrange
+context.Lagrange=project:Lagrange -Private
 
-context.Lagrange.Focus=project:Lagrange (-Backlog)
-context.Lagrange.Admin=project:Lagrange (+Chore or +Backlog)
+context.Lagrange.Focus=project:Lagrange (-Backlog) -Private
+context.Lagrange.Admin=project:Lagrange (+Chore or +Backlog) -Private
 
 context.Personal=project.not:Lagrange or priority:H or +OVERDUE
 
-default.command=now
+default.command=ready
 recurrence.limit=1
 
-context=Workday
