@@ -1,0 +1,6 @@
+[updates]
+auto_update = true
+# Update every 7 days
+auto_update_interval_hours = 168
+[display]
+compact = true
