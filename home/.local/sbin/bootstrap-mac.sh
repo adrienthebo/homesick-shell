@@ -16,11 +16,14 @@ if ! [[ -d ~/.asdf ]]; then
 
   asdf plugin add ruby
   asdf plugin add python
+  asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
 
   asdf install ruby 2.7.2
   asdf global ruby 2.7.2
   asdf install python 3.9.2
   asdf global python 3.9.2
+  asdf install kubectl 1.22.10
+  asdf global kubectl 1.22.10
 fi
 
 # shellcheck disable=SC1090
