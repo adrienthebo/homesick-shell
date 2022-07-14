@@ -1,0 +1,25 @@
+# cert-manager
+
+> Cloud native certificate management.
+>
+> More info: <https://cert-manager.io/>
+
+- Show certificate requests
+
+  `kubectl describe certificaterequest`
+
+- Show cert-manager challenges
+
+  `kubectl describe challenge`
+
+- Show cert-manager orders
+
+  `kubectl describe order`
+
+- Show errors from the cert-manager log
+
+  `kubectl --namespace cert-manager logs -l app=cert-manager -l app.kubernetes.io/component=controller -f | grep '^E'`
+
+- Show the cert-manager service account IAM user
+
+  `kubectl --namespace cert-manager get serviceaccount cert-manager -ojson | jq -r '.metadata.annotations["iam.gke.io/gcp-service-account"]'`
