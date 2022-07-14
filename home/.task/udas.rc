@@ -1,8 +1,5 @@
 # Taskwarrior UDAs
 
-uda.jira.type=string
-uda.jira.label=JIRA
-
 uda.url.label=URL
 uda.url.type=string
 

@@ -9,7 +9,7 @@ report.ready.columns=id,start.age,entry.age,depends.indicator,priority,project,t
 report.waiting.columns=id,start.active,entry.age,depends.indicator,priority,project,tags,recur.indicator,wait,wait.remaining,scheduled,due.relative,until,description
 
 # Limit results for 'newest' report
-report.newest.filter=(status:pending or status:waiting) limit:20
+report.newest.filter=status:pending limit:20
 
 ###
 # Custom reports
@@ -17,28 +17,26 @@ report.newest.filter=(status:pending or status:waiting) limit:20
 #####
 # Task triaging
 
-report.untriaged.description=Untriaged tasks
-# Tasks that -
-# * Are not completed or deleted
-#
-# AND ANY OF
-#
-# * Are tagged +Untriaged
-# * Don't have a due date or until date
-# * Are low priority and don't have an until date
-report.untriaged.filter=(status.not:completed status.not:deleted status.not:waiting) -Triaged (+Untriaged or (due: until: ) or (priority:L until: ))
-report.untriaged.sort=entry+
-report.untriaged.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
-report.untriaged.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
+report.inbox.description=GTD Inbox
+report.inbox.filter=status:pending -WAITING ((+Inbox or +Untriaged or ((due: until: ) or (priority:L until: ))))
+report.inbox.sort=urgency-
+report.inbox.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
+report.inbox.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
+report.inbox.context=0
 
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
-report.triage.filter=(status.not:completed status.not:deleted status.not:waiting) -Triaged (+Untriaged or (due: until: ) or (priority:L until: )) limit:1
+report.triage.filter=status:pending -WAITING ((+Inbox or +Untriaged or ((due: until: ) or (priority:L until: )))) limit:1
 report.triage.columns=id,status,project,depends,tags,due.relative,until.relative,description.combined
 report.triage.labels=ID,status.short,Project,Depends,Tags,Due,Until,Description
+report.triage.context=0
 
-report.triage.description=What to do, right now
-report.now.filter=status:pending +READY +next
+# Show:
+#   - Anything tagged next, OR
+#   - Anything tagged Actionable, OR,
+#   - Any active task that isn't waited or scheduled.
+report.now.description=What to do, right now
+report.now.filter=status:pending (+next or +Actionable or (+ACTIVE +READY))
 report.now.sort=due+
 report.now.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
 report.now.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
@@ -68,8 +66,8 @@ report.yesterday.labels=ID,Project,urgency,Description
 report.today.description=Today's upcoming tasks
 report.today.filter=(((wait.after:today wait.before:eod) or (due.after:today due.before:eod) or (scheduled.not: scheduled.after:today scheduled.before:tomorrow) or +ACTIVE) status.not:completed status.not:deleted) or (status:completed end:today)
 report.today.sort=status+\/,wait+,urgency-
-report.today.columns=id,entry.age,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
-report.today.labels=ID,Entry,Status,P,Project,Tags,S,Wait,Due,Urg,Description
+report.today.columns=id,uuid.short,entry.age,status.short,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
+report.today.labels=ID,UUID,Entry,Status,P,Project,Tags,S,Wait,Due,Urg,Description
 
 report.tomorrow.description=Tomorrow's upcoming tasks
 report.tomorrow.filter=((wait.after:tomorrow wait.before:tomorrow+1d) or (due.after:tomorrow due.before:tomorrow+1d) or (scheduled.after:tomorrow scheduled.before:tomorrow+1d) or +OVERDUE) status.not:completed status.not:deleted
@@ -103,12 +101,12 @@ report.yaks.labels=ID,Project,Entry,Status,Tags,R,S,Until,Description
 
 report.mandatory.description=Mandatory tasks
 report.mandatory.sort=due+
-report.mandatory.filter=(status:pending or status:waiting) +Mandatory
+report.mandatory.filter=status:pending +Mandatory
 report.mandatory.labels=ID,Project,Status,D,W,S,Due,Until,P,Entry,Urgency,Description
 report.mandatory.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,entry,urgency,description.count
 
 report.backlog.description=Backlogged tasks
 report.backlog.sort=entry-
-report.backlog.filter=(status:pending or status:waiting) +Backlog
+report.backlog.filter=status:pending +Backlog
 report.backlog.labels=ID,Project,Status,D,W,S,Due,Until,P,Entry,Urgency,Description
 report.backlog.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,entry,urgency,description.count

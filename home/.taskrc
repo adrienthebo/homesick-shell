@@ -10,24 +10,10 @@ include ~/.task/theme.rc
 include ~/.task/intheam.rc
 include ~/.task/reports.rc
 include ~/.task/udas.rc
+include ~/.task/contexts.rc
 
-
-
-context.Workday=project.not:Personal or (project:Personal -Backlog) or +OVERDUE or (due.after:now due.before:now+2hr)
-# Working hours:
-#
-# Show:
-#   * Personal projects 
-#   * High priority items
-#   * Non-backlog items
-
-context.Lagrange=project:Lagrange -Private
-
-context.Lagrange.Focus=project:Lagrange (-Backlog) -Private
-context.Lagrange.Admin=project:Lagrange (+Chore or +Backlog) -Private
-
-context.Personal=project.not:Lagrange or priority:H or +OVERDUE
-
-default.command=ready
+default.command=now
 recurrence.limit=1
 
+news.version=2.6.0
+context=Workday
