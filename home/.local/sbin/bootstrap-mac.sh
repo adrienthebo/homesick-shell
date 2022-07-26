@@ -90,3 +90,6 @@ test -d ~/.ssh || install -m 0700 -d ~/.ssh
 if ! [[ -f ~/.ssh/id_ed25519 ]]; then
   ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519 -a 100 -C "$USER@$(hostname)" -N ""
 fi
+
+defaults write com.apple.notificationcenterui bannerTime -int 60
+
