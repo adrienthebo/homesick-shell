@@ -41,6 +41,12 @@ report.now.sort=due+
 report.now.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
 report.now.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
 
+report.backlog.description=Backlog
+report.backlog.filter=status:pending (-Actionable -next)
+report.backlog.sort=urgency-
+report.backlog.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
+report.backlog.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
+
 #####
 # Timeline based reports
 
@@ -95,18 +101,3 @@ report.yaks.filter=(entry.after:now-1w or end.after:now-1w) +Yaks
 report.yaks.sort=status+/,entry+
 report.yaks.columns=id,project,entry.age,status,tags,recur.indicator,scheduled.countdown,until.remaining,description.count
 report.yaks.labels=ID,Project,Entry,Status,Tags,R,S,Until,Description
-
-#####
-# High/low priority tasks
-
-report.mandatory.description=Mandatory tasks
-report.mandatory.sort=due+
-report.mandatory.filter=status:pending +Mandatory
-report.mandatory.labels=ID,Project,Status,D,W,S,Due,Until,P,Entry,Urgency,Description
-report.mandatory.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,entry,urgency,description.count
-
-report.backlog.description=Backlogged tasks
-report.backlog.sort=entry-
-report.backlog.filter=status:pending +Backlog
-report.backlog.labels=ID,Project,Status,D,W,S,Due,Until,P,Entry,Urgency,Description
-report.backlog.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,entry,urgency,description.count
