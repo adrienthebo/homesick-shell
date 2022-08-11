@@ -37,8 +37,8 @@ report.triage.context=0
 #   - Any active task that isn't waited or scheduled.
 report.now.description=What to do, right now
 report.now.filter=status:pending (+next or +Actionable or (+ACTIVE +READY))
-report.now.sort=urgency-
-report.now.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
+report.now.sort=start+,project-/,urgency-
+report.now.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.combined
 report.now.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
 
 report.backlog.description=Backlog
