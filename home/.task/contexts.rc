@@ -26,3 +26,9 @@ context.Personal.write=project:Personal
 # SHIFT only.
 context.SHIFT.read=(project:SHIFT) or priority:H or +OVERDUE
 context.SHIFT.write=project:SHIFT
+
+context.RampUp.read=project:Gitpod +RampUp
+context.RampUp.write=project:Gitpod
+
+context.RampDown.read=project:Gitpod +RampDown
+context.RampDown.write=project:Gitpod
