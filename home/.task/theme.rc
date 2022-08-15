@@ -24,7 +24,7 @@
 #
 ###############################################################################
 
-rule.precedence.color=deleted,completed,active,keyword.,tag.,overdue,scheduled,due.today,due,uda.priority.L,blocked,blocking,recurring,tagged,uda.
+rule.precedence.color=deleted,completed,tag.WAITING,active,keyword.,tag.,overdue,scheduled,due.today,due,uda.priority.L,blocked,blocking,recurring,tagged,uda.
 
 # General decoration
 color.label=
@@ -56,6 +56,7 @@ color.uda.priority.L=grey08
 
 # Tags
 color.tag.next=bold yellow on grey05
+color.tag.WAITING=grey08 on black
 color.tag.none=
 color.tagged=
 

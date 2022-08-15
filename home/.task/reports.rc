@@ -10,6 +10,7 @@ report.waiting.columns=id,start.active,entry.age,depends.indicator,priority,proj
 
 # Limit results for 'newest' report
 report.newest.filter=status:pending limit:20
+report.newest.context=0
 
 ###
 # Custom reports
@@ -18,15 +19,15 @@ report.newest.filter=status:pending limit:20
 # Task triaging
 
 report.inbox.description=GTD Inbox
-report.inbox.filter=status:pending -WAITING ((+Inbox or +Untriaged or ((due: until: ) or (priority:L until: ))))
-report.inbox.sort=urgency-
+report.inbox.filter=(status:pending) -WAITING (bucket: or bucket:Inbox ((due: until: ) or (priority:L until: )))
+report.inbox.sort=urgency+
 report.inbox.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
 report.inbox.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
 report.inbox.context=0
 
 report.triage.description=Show the next issue to triage
 report.triage.sort=urgency-
-report.triage.filter=status:pending -WAITING ((+Inbox or +Untriaged or ((due: until: ) or (priority:L until: )))) limit:1
+report.triage.filter=(status:pending) -WAITING (bucket: or bucket:Inbox ((due: until: ) or (priority:L until: ))) limit:1
 report.triage.columns=id,status,project,depends,tags,due.relative,until.relative,description.combined
 report.triage.labels=ID,status.short,Project,Depends,Tags,Due,Until,Description
 report.triage.context=0
@@ -36,13 +37,19 @@ report.triage.context=0
 #   - Anything tagged Actionable, OR,
 #   - Any active task that isn't waited or scheduled.
 report.now.description=What to do, right now
-report.now.filter=status:pending (+next or +Actionable or (+ACTIVE +READY))
-report.now.sort=start+,project-/,urgency-
-report.now.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.combined
-report.now.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
+report.now.filter=(status:pending or status:waiting) (+next or bucket:InProgress or bucket:Next or bucket:Now)
+report.now.sort=bucket-/,project-,urgency-
+report.now.columns=id,tags,entry.age,priority,urgency,project,due.remaining,bucket,description.combined
+report.now.labels=ID,Tags,Age,P,Urg,Project,Due,Bucket,Description
+
+report.plan.description=What to do next
+report.plan.filter=(status:pending or status:waiting) (bucket:Next or (bucket:Planned)) limit:10
+report.plan.sort=bucket+/,urgency-
+report.plan.columns=id,tags,entry.age,priority,urgency,project,due.remaining,bucket,description.combined
+report.plan.labels=ID,Tags,Age,P,Urg,Project,Due,Bucket,Description
 
 report.backlog.description=Backlog
-report.backlog.filter=status:pending ((-Actionable -next) or +Backlog)
+report.backlog.filter=(status:pending or status:waiting) (bucket:Backlog or bucket:Planned)
 report.backlog.sort=project+/,urgency-
 report.backlog.columns=id,entry.age,priority,project,tags,scheduled.relative,wait.remaining,due.remaining,urgency,description.count
 report.backlog.labels=ID,Age,P,Project,Tags,S,Wait,Due,Urg,Description
@@ -93,7 +100,7 @@ report.recent.labels=ID,Status,Project,Created,Modified,Description
 report.open.description=All open tasks
 report.open.sort=project+\/,entry-
 report.open.filter=status.not:completed status.not:deleted status.not:recurring
-report.open.labels=ID,Project,Status,D,W,S,Due,Until,P,Entry,Urgency,Description
+report.open.labels=ID,Project,Status,D,Wait,S,Due,Until,P,Entry,Urgency,Description
 report.open.columns=id,project,status.short,depends,wait.relative,scheduled.relative,due.remaining,until.remaining,priority,entry,urgency,description.count
 
 report.yaks.description=Domesticated Himalayan Long Haired Cattle
@@ -101,3 +108,9 @@ report.yaks.filter=(entry.after:now-1w or end.after:now-1w) +Yaks
 report.yaks.sort=status+/,entry+
 report.yaks.columns=id,project,entry.age,status,tags,recur.indicator,scheduled.countdown,until.remaining,description.count
 report.yaks.labels=ID,Project,Entry,Status,Tags,R,S,Until,Description
+
+report.board.description=Kanban, taskwarrior style
+report.board.filter=status.not:completed status.not:deleted status.not:recurring
+report.board.sort=bucket-/,urgency+
+report.board.labels=ID,Age,Wait,Due,Status,Bucket,Project,Until,P,Urgency,Description
+report.board.columns=id,entry.age,wait.remaining,due.remaining,status,bucket,project,until.remaining,priority,urgency,description.count
